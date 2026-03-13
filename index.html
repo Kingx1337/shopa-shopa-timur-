@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveX | Modern Dark Garage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Inter', sans-serif;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Цветовая гамма */
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --accent-electric: #4a90e2;
+            --accent-glow: #6d5dfc;
+            --text-light: #f0f0f0;
+            --text-dim: #a0a0a0;
+            --border-dim: #333;
+        }
+
+        /* Типография */
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            border-radius: 2px;
+        }
+
+        /* Шапка (Header) */
+        .header {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-dim);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-menu a:hover {
+            color: var(--accent-electric);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .search-icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-dim);
+            transition: color 0.3s;
+        }
+        .search-icon:hover {
+            color: var(--text-light);
+        }
+
+        .btn-call {
+            background: transparent;
+            border: 2px solid #ff4e50;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+            cursor: pointer;
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-image: linear-gradient(45deg, #ff4e50, #f9d423) 1;
+        }
+        .btn-call:hover {
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            color: white;
+            -webkit-text-fill-color: white;
+            border: 2px solid transparent;
+        }
+
+        /* Hero секция */
+        .hero {
+            padding: 60px 0 80px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0px 4px 20px rgba(255, 78, 80, 0.5);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 25px rgba(255, 78, 80, 0.7);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            border: 2px solid var(--text-dim);
+            transition: 0.3s;
+        }
+        .btn-secondary:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Фильтр подбора */
+        .filter-section {
+            margin-top: -40px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-panel {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 25px 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-end;
+            border: 1px solid var(--border-dim);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+
+        .filter-item {
+            flex: 1 1 150px;
+        }
+        .filter-item label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .filter-item select, .filter-item input {
+            width: 100%;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .filter-btn {
+            background: var(--accent-electric);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            min-width: 120px;
+        }
+        .filter-btn:hover {
+            background: #2a6fc9;
+            box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+        }
+
+        /* Популярные модели */
+        .popular {
+            padding: 60px 0;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .car-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-dim);
+            transition: 0.3s;
+        }
+        .car-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-electric);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+        }
+
+        .car-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .car-card:hover .car-image img {
+            transform: scale(1.1);
+        }
+
+        .car-info {
+            padding: 25px;
+        }
+        .car-name {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+        .car-specs {
+            display: flex;
+            gap: 15px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+        .car-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f9d423;
+        }
+        .car-price small {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        /* Преимущества */
+        .features {
+            background: var(--bg-dark);
+            padding: 80px 0;
+            border-top: 1px solid var(--border-dim);
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .feature-item p {
+            color: var(--text-dim);
+        }
+
+        /* Футер */
+        .footer {
+            background: #0a0a0a;
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-dim);
+            border-top: 1px solid #222;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .nav-menu {
+                display: none; /* Для мобильного нужно добавить бургер-меню */
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .filter-panel {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filter-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">⏱️</span>
+                <span>DRIVEX</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#">Каталог</a></li>
+                <li><a href="#">Услуги</a></li>
+                <li><a href="#">Тест-драйв</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+            <div class="header-actions">
+                <span class="search-icon">🔍</span>
+                <button class="btn-call">Заказать звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Твоя свобода начинается здесь.</h1>
+                <p>Широкий выбор автомобилей от классики до электрокаров будущего. Подберем авто под любой запрос.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">Смотреть каталог</a>
+                    <a href="#" class="btn-secondary">Подобрать авто</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="filter-section">
+        <div class="container">
+            <div class="filter-panel">
+                <div class="filter-item">
+                    <label>Марка</label>
+                    <select>
+                        <option>Все марки</option>
+                        <option>Porsche</option>
+                        <option>BMW</option>
+                        <option>Audi</option>
+                        <option>Tesla</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>Модель</label>
+                    <select>
+                        <option>Любая</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>Год от</label>
+                    <select>
+                        <option>2020</option>
+                        <option>2021</option>
+                        <option>2022</option>
+                        <option>2023</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>Цена до</label>
+                    <input type="text" placeholder="10 000 000 ₽">
+                </div>
+                <button class="filter-btn">Найти</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="popular">
+        <div class="container">
+            <h2>Популярные модели</h2>
+            <div class="car-grid">
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="porshe.webp" alt="Porsche 911 Carrera">
+                    </div>
+                    <div class="car-info">
+                        <div class="car-name">Porsche 911 Carrera</div>
+                        <div class="car-specs">
+                            <span>3.0 L</span> <span>450 л.с.</span> <span>3.4 с</span>
+                        </div>
+                        <div class="car-price">от 12 500 000 ₽</div>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="m4.webp" alt="BMW M4">
+                    </div>
+                    <div class="car-info">
+                        <div class="car-name">BMW M4 Competition</div>
+                        <div class="car-specs">
+                            <span>3.0 L</span> <span>510 л.с.</span> <span>3.8 с</span>
+                        </div>
+                        <div class="car-price">от 9 800 000 ₽</div>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="rs4.webp" alt="Audi RS6">
+                    </div>
+                    <div class="car-info">
+                        <div class="car-name">Audi RS6 Avant</div>
+                        <div class="car-specs">
+                            <span>4.0 L</span> <span>600 л.с.</span> <span>3.6 с</span>
+                        </div>
+                        <div class="car-price">от 11 200 000 ₽</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Гарантия качества</h3>
+                    <p>Проверка по 150 пунктам. Полная диагностика перед продажей.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Выгодный Trade-in</h3>
+                    <p>Оценка вашего авто за 30 минут. Доплата сразу.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Быстрое оформление</h3>
+                    <p>Кредит и страховка на месте. Поможем с документами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 DriveX. Все права защищены. Стиль — Modern Dark Garage.</p>
+        </div>
+    </footer>
+</body>
+</html>
