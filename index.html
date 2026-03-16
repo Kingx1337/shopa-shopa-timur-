@@ -276,6 +276,233 @@
             box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
         }
 
+        /* Слайдер (карусель) */
+        .slider-section {
+            padding: 60px 0;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--border-dim);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+            height: 500px;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 50px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: white;
+        }
+
+        .slide-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.5);
+            border: 2px solid var(--border-dim);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        .slider-btn:hover {
+            background: rgba(255,78,80,0.8);
+            border-color: #ff4e50;
+        }
+
+        .slider-prev {
+            left: 20px;
+        }
+
+        .slider-next {
+            right: 20px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .dot.active {
+            background: #ff4e50;
+            transform: scale(1.2);
+            box-shadow: 0 0 10px #ff4e50;
+        }
+
+        /* Новые вкладки */
+        .tabs-section {
+            padding: 60px 0;
+            background: var(--bg-dark);
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid var(--border-dim);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid var(--border-dim);
+            color: var(--text-dim);
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 6px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .tab-btn:hover {
+            border-color: #ff4e50;
+            color: white;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            border-color: transparent;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-dim);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff4e50;
+            box-shadow: 0 10px 30px rgba(255,78,80,0.2);
+        }
+
+        .service-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #f9d423;
+        }
+
+        .service-card p {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        /* Преимущества */
+        .features {
+            background: var(--bg-dark);
+            padding: 80px 0;
+            border-top: 1px solid var(--border-dim);
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .feature-item p {
+            color: var(--text-dim);
+        }
+
         /* Популярные модели */
         .popular {
             padding: 60px 0;
@@ -341,36 +568,6 @@
             font-weight: 400;
         }
 
-        /* Преимущества */
-        .features {
-            background: var(--bg-dark);
-            padding: 80px 0;
-            border-top: 1px solid var(--border-dim);
-            border-bottom: 1px solid var(--border-dim);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 20px;
-        }
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        .feature-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .feature-item p {
-            color: var(--text-dim);
-        }
-
         /* Футер */
         .footer {
             background: #0a0a0a;
@@ -383,7 +580,7 @@
         /* Адаптивность */
         @media (max-width: 900px) {
             .nav-menu {
-                display: none; /* Для мобильного нужно добавить бургер-меню */
+                display: none;
             }
             .hero h1 {
                 font-size: 2.8rem;
@@ -394,6 +591,35 @@
             }
             .filter-item {
                 width: 100%;
+            }
+            .slide {
+                height: 400px;
+            }
+            .slide-content h3 {
+                font-size: 1.8rem;
+            }
+            .slide-content p {
+                font-size: 1rem;
+            }
+            .slide-content {
+                padding: 30px;
+            }
+            .tabs-nav {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .slide {
+                height: 350px;
+            }
+            .slide-content h3 {
+                font-size: 1.5rem;
+            }
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -469,6 +695,138 @@
         </div>
     </div>
 
+    <!-- Новый слайдер (карусель) -->
+    <section class="slider-section">
+        <div class="container">
+            <h2>Новые поступления</h2>
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                    <div class="slide">
+                        <img src="porshe.webp" alt="Porsche 911 GT3">
+                        <div class="slide-content">
+                            <h3>Porsche 911 GT3</h3>
+                            <p>Спорткар с гоночным характером. 4.0 литра, 510 л.с., разгон до 100 км/ч за 3.4 секунды.</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="m4.webp" alt="BMW M5">
+                        <div class="slide-content">
+                            <h3>BMW M5 Competition</h3>
+                            <p>Бизнес-седан с мощностью 625 л.с. и полным приводом. Идеальное сочетание комфорта и скорости.</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="gt4jpg.jpg" alt="Mercedes-AMG GT">
+                        <div class="slide-content">
+                            <h3>Mercedes-AMG GT</h3>
+                            <p>Немецкая элегантность и мощь. V8 битурбо, 585 л.с., 3.6 секунды до 100 км/ч.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-btn slider-prev" id="prevSlide">‹</button>
+                <button class="slider-btn slider-next" id="nextSlide">›</button>
+                <div class="slider-dots" id="sliderDots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Новые вкладки с услугами -->
+    <section class="tabs-section">
+        <div class="container">
+            <h2>Наши услуги</h2>
+            <div class="tabs-nav">
+                <button class="tab-btn active" data-tab="tab1">Обслуживание</button>
+                <button class="tab-btn" data-tab="tab2">Тюнинг</button>
+                <button class="tab-btn" data-tab="tab3">Детейлинг</button>
+                <button class="tab-btn" data-tab="tab4">Шиномонтаж</button>
+            </div>
+            
+            <div class="tab-content active" id="tab1">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Техническое обслуживание</h4>
+                        <p>Замена масла, фильтров, свечей зажигания. Полная диагностика всех систем.</p>
+                        <div class="service-price">от 5 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h4>Ремонт двигателя</h4>
+                        <p>Диагностика и ремонт ДВС любой сложности. Профессиональное оборудование.</p>
+                        <div class="service-price">от 15 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h4>Ремонт трансмиссии</h4>
+                        <p>Ремонт АКПП, МКПП, вариаторов. Замена сцепления и масла.</p>
+                        <div class="service-price">от 8 000 ₽</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab2">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Чип-тюнинг</h4>
+                        <p>Увеличение мощности двигателя, оптимизация расхода топлива.</p>
+                        <div class="service-price">от 25 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h4>Выхлопная система</h4>
+                        <p>Замена глушителей, установка прямоточных систем, настройка звука.</p>
+                        <div class="service-price">от 20 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h4>Подвеска</h4>
+                        <p>Занижение, усиление, замена пружин и амортизаторов.</p>
+                        <div class="service-price">от 12 000 ₽</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab3">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Детейлинг кузова</h4>
+                        <p>Полировка, нанесение керамики, защитных пленок.</p>
+                        <div class="service-price">от 10 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h4>Химчистка салона</h4>
+                        <p>Глубокая чистка всех поверхностей, удаление запахов.</p>
+                        <div class="service-price">от 5 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h4>Бронирование фар</h4>
+                        <p>Защита фар от сколов и царапин.</p>
+                        <div class="service-price">от 3 000 ₽</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab4">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Сезонная смена шин</h4>
+                        <p>Балансировка, хранение шин, замена.</p>
+                        <div class="service-price">от 2 500 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h4>Ремонт проколов</h4>
+                        <p>Бескамерный ремонт, вулканизация.</p>
+                        <div class="service-price">от 1 000 ₽</div>
+                    </div>
+                    <div class="service-card">
+                        <h4>Правка дисков</h4>
+                        <p>Ремонт литых и кованых дисков.</p>
+                        <div class="service-price">от 2 000 ₽</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="popular">
         <div class="container">
             <h2>Популярные модели</h2>
@@ -540,5 +898,61 @@
             <p>© 2025 DriveX. Все права защищены. Стиль — Modern Dark Garage.</p>
         </div>
     </footer>
+
+    <script>
+        // Слайдер
+        const sliderTrack = document.getElementById('sliderTrack');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        function updateSlider() {
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlider();
+            });
+        });
+
+        // Автоматическое переключение слайдов каждые 5 секунд
+        setInterval(nextSlide, 5000);
+
+        // Вкладки
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
